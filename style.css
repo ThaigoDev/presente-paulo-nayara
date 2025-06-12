@@ -1,0 +1,295 @@
+/* Importação das fontes do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap');
+
+/* Reset Básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif; /* Fonte para o corpo do texto */
+    background-color: #f9f7f6; /* Fundo suave */
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden; /* Evita rolagem horizontal indesejada */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Cabeçalho da Página */
+.page-header {
+    text-align: center;
+    padding: 60px 20px 40px;
+    width: 100%;
+    background: linear-gradient(135deg, #f8f0ec 0%, #f6e6e2 100%); /* Gradiente suave */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.page-title {
+    font-family: 'Cormorant Garamond', serif; /* Fonte elegante para o título */
+    font-size: 3.2em;
+    font-weight: 500;
+    color: #4a4a4a;
+    margin-bottom: 8px;
+    letter-spacing: 0.05em;
+}
+
+.page-subtitle {
+    font-size: 1.1em;
+    color: #777;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+/* Container Principal da Linha do Tempo */
+.timeline-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 900px;
+    width: 95%;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin: 50px auto;
+    overflow: hidden;
+}
+
+/* Slider de Imagens */
+.timeline-slider {
+    position: relative;
+    width: 100%;
+    height: 450px; /* Altura fixa para as imagens */
+    overflow: hidden;
+    border-bottom: 1px solid #eee;
+}
+
+.timeline-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1); /* Transição suave e elegante */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timeline-slide.active {
+    opacity: 1;
+}
+
+.timeline-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garante que a imagem preencha o espaço */
+    filter: brightness(0.95); /* Suaviza um pouco as cores */
+}
+
+/* Seção de Conteúdo (Citação e Descrição) */
+.content-section {
+    padding: 50px 40px;
+    text-align: center;
+}
+
+.timeline-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.8em;
+    color: #6a6a6a;
+    margin-bottom: 25px;
+    line-height: 1.4;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.timeline-quote.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.timeline-description {
+    font-size: 1em;
+    color: #555;
+    line-height: 1.7;
+    max-width: 700px;
+    margin: 0 auto 40px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s; /* Atraso para animação sequencial */
+}
+
+.timeline-description.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Controles de Navegação (Botões e Barra de Progresso) */
+.controls-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 25px;
+}
+
+.nav-button {
+    background: none;
+    border: 2px solid #ccc;
+    border-radius: 50%; /* Botões redondos */
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #888;
+}
+
+.nav-button:hover {
+    background-color: #f0f0f0;
+    border-color: #999;
+    color: #4a4a4a;
+    transform: scale(1.05);
+}
+
+.nav-button:active {
+    transform: scale(0.95);
+}
+
+.nav-button svg {
+    width: 24px;
+    height: 24px;
+}
+
+.progress-bar-container {
+    width: 200px; /* Largura da barra de progresso */
+    height: 4px;
+    background-color: #e0e0e0;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #a7a7a7; /* Cor da barra de progresso */
+    width: 0%;
+    transition: width 0.1s linear;
+}
+
+/* Indicadores (Pontos) */
+.indicators {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.indicator-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ddd;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator-dot.active {
+    background-color: #888;
+    transform: scale(1.2);
+}
+
+/* Botão de Música Flutuante */
+.music-toggle {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    color: #888;
+    font-size: 1.4em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1000; /* Garante que fique por cima */
+}
+
+.music-toggle:hover {
+    background-color: #f0f0f0;
+    color: #4a4a4a;
+    transform: scale(1.08);
+}
+
+.music-toggle.playing {
+    color: #b36b6b; /* Cor para indicar que a música está tocando */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 2.5em;
+    }
+
+    .page-subtitle {
+        font-size: 0.9em;
+    }
+
+    .timeline-container {
+        margin: 30px 15px;
+        width: calc(100% - 30px);
+    }
+
+    .timeline-slider {
+        height: 300px;
+    }
+
+    .content-section {
+        padding: 40px 20px;
+    }
+
+    .timeline-quote {
+        font-size: 1.5em;
+    }
+
+    .timeline-description {
+        font-size: 0.9em;
+    }
+
+    .controls-wrapper {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .progress-bar-container {
+        width: 80%;
+    }
+
+    .music-toggle {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-title {
+        font-size: 2em;
+    }
+    .timeline-slider {
+        height: 250px;
+    }
+}
